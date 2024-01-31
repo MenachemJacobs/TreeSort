@@ -58,7 +58,7 @@ public class MyTreeMap<K, V> implements Map<K, V> {
      */
     private Node findNode(Object target) {
         Node returnal = null;
-        Node next = root;
+        Node pointer = root;
 
         // some implementations can handle null as a key, but not this one
         if (target == null) {
@@ -70,21 +70,14 @@ public class MyTreeMap<K, V> implements Map<K, V> {
         Comparable<? super K> k = (Comparable<? super K>) target;
 
         // TODO: FILL THIS IN!
-        while(returnal == null && next != null){
-            switch(k.compareTo(next.key)){
-                case 0:
-                    returnal = next;
-                    break;
-                case -1:
-                    next = next.left;
-                    break;
-                case 1:
-                    next = next.right;
-                    break;
-            }
+        while(returnal == null && pointer != null){
+            if(k == pointer.key)
+                returnal = pointer;
+            else
+                pointer = k.compareTo(pointer.key) < 0 ? pointer.left : pointer.right;
         }
 
-        return null;
+        return returnal;
     }
 
     /**
