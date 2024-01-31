@@ -57,6 +57,9 @@ public class MyTreeMap<K, V> implements Map<K, V> {
      * @param target
      */
     private Node findNode(Object target) {
+        Node returnal = null;
+        Node next = root;
+
         // some implementations can handle null as a key, but not this one
         if (target == null) {
             throw new IllegalArgumentException();
@@ -67,6 +70,20 @@ public class MyTreeMap<K, V> implements Map<K, V> {
         Comparable<? super K> k = (Comparable<? super K>) target;
 
         // TODO: FILL THIS IN!
+        while(returnal == null && next != null){
+            switch(k.compareTo(next.key)){
+                case 0:
+                    returnal = next;
+                    break;
+                case -1:
+                    next = next.left;
+                    break;
+                case 1:
+                    next = next.right;
+                    break;
+            }
+        }
+
         return null;
     }
 
