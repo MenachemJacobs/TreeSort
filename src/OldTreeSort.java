@@ -1,7 +1,7 @@
 import java.util.Collection;
 import java.util.Iterator;
 
-public class TreeSort<E extends Comparable<E>> {
+public class OldTreeSort<E extends Comparable<E>> {
 
     /**
      * A private inner class representing a node in the linked list.
